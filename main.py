@@ -96,11 +96,11 @@ while True:
         
 
                 if counter == 0:
-                    cvzone.putTextRect(imgBackground,"Loading...",(275,400))
-                    cv2.imshow("Face Attendance",imgBackground)
-                    cv2.waitKey(1)
+                    # cvzone.putTextRect(imgBackground,"Loading...",(275,400))
+                    # cv2.imshow("Face Attendance",imgBackground)
+                    # cv2.waitKey(1)
                     counter = 1
-                    modeType=1
+                    modeType=2
                     
         if counter != 0:
             
@@ -124,17 +124,17 @@ while True:
                     ref.child("Total_Attendance").set(studentInfo["Total_Attendance"])
                     ref.child("Total_Attendance_time").set(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
                 else:
-                    modeType=3
+                    modeType=4
                     counter=0
                     imgBackground[44:44+633,808:808+414]=imgModeList[modeType]
                 
             
-            if modeType != 3:
+            if modeType != 0:
                 
             
             
-                if 10<counter <20:    
-                    modeType=2
+                if 10 <counter <20:    
+                    modeType=1
                 
                 imgBackground[44:44+633,808:808+414]=imgModeList[modeType]
                 
@@ -147,14 +147,14 @@ while True:
                 
                     cv2.putText(imgBackground,str(studentInfo["Major"]),(1006,550),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,255,255),1)
                     cv2.putText(imgBackground,str(id),(1006,493),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,255,255),1)
-                    cv2.putText(imgBackground,str(studentInfo["RollNo"]),(910,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)        
-                    cv2.putText(imgBackground,str(studentInfo["Section"]),(1025,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)
-                    cv2.putText(imgBackground,str(studentInfo["Year"]),(1125,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)
-
+                           
+                    #cv2.putText(imgBackground,str(studentInfo["Section"]),(1025,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)
+                    cv2.putText(imgBackground,str(studentInfo["Year"]),(1025,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)
+                    cv2.putText(imgBackground,str(studentInfo["RollNo"]),(1125,625),cv2.FONT_HERSHEY_COMPLEX,0.6,(100,100,100),1)
                 
                     (w,h),_=cv2.getTextSize(str(studentInfo["Name"]),cv2.FONT_HERSHEY_COMPLEX,1,1)
                     offset=(414-w)//2
-                    cv2.putText(imgBackground,str(studentInfo["Name"]),(808+offset,445),cv2.FONT_HERSHEY_COMPLEX,1,(50,50,50),1)    
+                    cv2.putText(imgBackground,str(studentInfo["Name"]),(808+offset,445),cv2.FONT_HERSHEY_COMPLEX,1,(50,50,50),2)    
                 
                     imgBackground[175:175+216,909:909+216]=imgStudent
             
@@ -179,7 +179,7 @@ while True:
     
     
     #cv2.imshow("Image",img)
-    cv2.imshow("Background",imgBackground)
+    cv2.imshow("Face Attendance",imgBackground)
     if cv2.waitKey(1) & 0xFF ==ord('q'):
         break
 
