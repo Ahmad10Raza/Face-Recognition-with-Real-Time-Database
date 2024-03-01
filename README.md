@@ -61,5 +61,5 @@ This project implements real-time face recognition using computer vision techniq
 
 **Author:**
 
-* Ahmad Raza
-* Murtaza :
+* [Ahmad Raza](https://ahmad10raza.github.io/Ahmad-Raza.github.io/)
+* [Murtaza Hussain](https://www.youtube.com/@murtazasworkshop)
